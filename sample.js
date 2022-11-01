@@ -1,5 +1,5 @@
 var lastValue = "";
-var clickedOperator;
+var clickedOperator="";
 function numberClick(number) {
   var screen = document.getElementById("screen");
   var currentValue = screen.value;
