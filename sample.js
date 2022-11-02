@@ -1,33 +1,40 @@
-var lastValue = "";
-var clickedOperator="";
-function numberClick(number) {
-  var screen = document.getElementById("screen");
-  var currentValue = screen.value;
-  var newValue = currentValue + number;
-  document.getElementById("screen").value = newValue;
+var number1 = "";
+var lastOperator = "";
+function displaynumber(numb) {
+    var displayTextbox = document.getElementById("numbDsplay");
+    displayTextbox.value = displayTextbox.value + numb;
 }
-function operation(operator) {
-  lastValue = document.getElementById("screen").value;
-  document.getElementById("screen").value = "";
-  clickedOperator = operator;
+function onOperatorClick(operator) {
+    lastOperator = operator;
+    var displayTextbox = document.getElementById("numbDsplay");
+    number1 = displayTextbox.value;
+    displayTextbox.value = "";
+
 }
 function calculate() {
-  var result;
-  var latestValue = document.getElementById("screen").value;
-  if (clickedOperator == "+") {
-    result = Number(lastValue) + Number(latestValue);
-    document.getElementById("screen").value = result;
-  } else if (clickedOperator == "-") {
-    result = Number(lastValue) - Number(latestValue);
-    document.getElementById("screen").value = result;
-  } else if (clickedOperator == "*") {
-    result = Number(lastValue) * Number(latestValue);
-    document.getElementById("screen").value = result;
-  } else {
-    result = Number(lastValue) / Number(latestValue);
-    document.getElementById("screen").value = result;
+    var displayTextbox = document.getElementById("numbDsplay");
+    var number2 = displayTextbox.value;
+    var result = "";
+    if (lastOperator == '+') {
+        result = Number(number1) + Number(number2);
+    }
+    else if (lastOperator == '-') {
+        result = Number(number1) - Number(number2);
+    }
+    else if (lastOperator == '*') {
+        result = Number(number1) * Number(number2);
+    }
+    else if (lastOperator == '/') {
+        result = Number(number1) / Number(number2);
+    }
+    else if (lastOperator == '%') {
+        result = Number(number1) % Number(number2);
+    }
+    
+        displayTextbox.value = result;
+        number1 = "";
+
+    }
+    function clears(){
+      document.getElementById("numbDsplay").value="";
   }
-}
-function clears() {
-  document.getElementById("screen").value = "";
-}
